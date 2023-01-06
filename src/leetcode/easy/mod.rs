@@ -10,13 +10,13 @@ pub fn factorial( n:u32 ) -> u32 {
 
 pub fn hammingWeight (n: u32) -> i32 {
 
-    let nn = format!( "{n:b}" ) ;
-
-    nn.chars().fold( 0, |accum, value| {
-        if value == '1' {
-            accum + 1
-        } else {
-            accum
-        }
-    })    
+    format!( "{n:b}" )
+        .chars()
+        .fold( 0, |accum, value| {
+            if value == '1' {
+                accum + 1
+            } else {
+                accum
+            }
+        })    
 }
