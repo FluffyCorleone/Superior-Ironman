@@ -2,13 +2,14 @@ mod leetcode ;
 mod codewars ;
 
 use crate::leetcode::easy::{ factorial, hammingWeight } ;
-use crate::codewars::{ unique_in_order, sum_dig_pow } ;
+use crate::codewars::{ unique_in_order, sum_dig_pow, tribonacci } ;
 
 fn main() {    
 
-    let a = sum_dig_pow( 10, 200 ) ;  
+    let a = [ 1f64, 1f64, 1f64 ] ;
+    let b = tribonacci( &a, 10 ) ;
     
-    println!( "{a:?}") ;
+    println!( "{b:?}") ;
 }
 
 #[cfg(test)]
