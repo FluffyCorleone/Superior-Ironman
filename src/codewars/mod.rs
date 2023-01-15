@@ -54,8 +54,7 @@ pub fn sum_dig_pow( a:u64, b:u64 ) -> Vec<u64> {
 pub fn tribonacci( signature: &[f64; 3], n: usize ) -> Vec<f64> {
 
     match n {
-        e @ 0..=2 => Vec::from( &signature[ 0..e ] ),
-        3 => Vec::from( &signature[..] ),
+        e @ 0..=3 => Vec::from( &signature[ ..e ] ),        
         _ => {
             let mut ret = Vec::from( &signature[..] ) ;            
 
@@ -69,3 +68,55 @@ pub fn tribonacci( signature: &[f64; 3], n: usize ) -> Vec<f64> {
         },
     }    
 } 
+
+// https://www.codewars.com/kata/5ac6932b2f317b96980000ca/train/rust
+pub fn min_value(mut digits: Vec<i32>) -> i32 {
+
+    digits.sort() ;
+    digits.dedup() ;
+
+    digits
+        .iter()
+        .map( |x| x.to_string() )
+        .collect::<String>()
+        .parse::<i32>()
+        .unwrap()    
+}
+
+// https://www.codewars.com/kata/58f5c63f1e26ecda7e000029/train/rust
+pub fn wave(s: &str) -> Vec<String> {
+
+    let sz = s.len() ;    
+
+    (0..sz)
+        .into_iter()
+        .map( |x| {
+            
+            s.char_indices()
+                .filter( |y| y.1 != ' ' )
+                .map( |y| {
+                    if y.0 == x {
+                        y.1.to_uppercase().to_string()                                            
+                    } else {
+                        y.1.to_string()
+                    }
+                })
+                .collect()            
+            
+        } )
+        .collect::<Vec<String>>()
+}
+
+// https://www.codewars.com/kata/587731fda577b3d1b0001196
+pub fn camel_case( str:&str ) -> String {
+
+    if str.is_empty() {
+        return "".to_string() ;
+    }
+
+    str.split( ' ' )
+        .into_iter()
+        .filter( |x| !x.is_empty() )
+        .map( |x| x[ 0..1 ].to_uppercase() + &x[ 1.. ].to_string() )
+        .collect()
+}
